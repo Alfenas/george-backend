@@ -15,6 +15,7 @@ class DbHelper:
                                             charset = 'utf8mb4',
                                             cursorclass = pymysql.cursors.DictCursor)
         self.__cursor = self.__connection.cursor()
+        self.__cursor.execute("SET SESSION MAX_EXECUTION_TIME=100000")
 
     def query(self, query, params):
        self.__cursor.execute(query, params)
